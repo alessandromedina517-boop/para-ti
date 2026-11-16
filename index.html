@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
 <meta name="robots" content="noindex">
-<title>Para ti</title>
+<title>Para Mami Cynthia 💌</title>
+<meta property="og:title" content="Para Mami Cynthia 💌">
+<meta property="og:description" content="Ábrelo con calma y con el volumen alto.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alessandromedina517-boop.github.io/para-ti/">
+<meta property="og:image" content="https://alessandromedina517-boop.github.io/para-ti/nosotros.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
 <style>
 :root{--papel:#fbf5ea;--fondo:#1d1826;--tinta:#4a3728;--terracota:#c0694a;--sello:#a8432f}
@@ -18,7 +23,7 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 @keyframes deriva{from{transform:translateX(-20px)}to{transform:translateX(50px)}}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.12)}}
 @keyframes flash{0%{opacity:0}25%{opacity:.95}100%{opacity:0}}
-@keyframes fugaz{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:0;transform:translate(240px,130px)}}
+@keyframes fugaz{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:0;transform:translate(-150px,140px)}}
 @keyframes soltar{from{opacity:0;transform:translate(-50%,-30px) rotate(8deg)}to{opacity:1;transform:translate(-50%,0) rotate(-3deg)}}
 @keyframes titilar{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes volar{from{transform:translate(-50%,-50%) scale(.3);opacity:1}to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.2);opacity:0}}
@@ -29,6 +34,7 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 @keyframes vuelo{from{transform:translate(-40px,-70px)}to{transform:translate(420px,-120px)}}
 @keyframes salto{0%,100%{transform:translateY(0)}25%{transform:translateY(-16px)}50%{transform:translateY(0)}72%{transform:translateY(-8px)}}
 @keyframes subir{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translateY(-130px) scale(1.3)}}
+@keyframes destella{0%{transform:scale(1)}35%{transform:scale(3.4)}100%{transform:scale(1.3)}}
 
 /* Sobre */
 #intro{align-self:center;text-align:center;padding:20px;color:var(--papel);animation:aparecer 1s ease both}
@@ -59,6 +65,9 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 #estrellas,#luces{opacity:0;transition:opacity 2.5s ease}
 #estrellas.on,#luces.on{opacity:1}
 #estrellas circle:nth-child(3n),#luces circle:nth-child(4n){animation:titilar 2.4s infinite}
+#mama{opacity:0;transition:opacity 2.5s ease;transform-box:fill-box;transform-origin:center;animation:latir 3s infinite}
+#mama.on{opacity:1}
+#mama.destella{animation:destella 2.6s ease forwards}
 #nubes,#aves{opacity:0;transition:opacity 2.5s ease}
 .n1{animation:deriva 38s linear infinite alternate}
 .n2{animation:deriva 52s linear infinite alternate-reverse}
@@ -98,6 +107,8 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 .capa.on{opacity:1}
 .capa img{display:block;width:100%;height:100%;object-fit:cover;animation:zoom 10s ease-out forwards}
 .capa::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--papel) 0,rgba(251,245,234,0) 16%),linear-gradient(to bottom,rgba(0,0,0,.35) 0,rgba(0,0,0,0) 14%)}
+#raspa{position:absolute;inset:0;width:100%;height:100%;z-index:4;opacity:0;pointer-events:none;transition:opacity .9s ease;touch-action:none}
+#raspa.on{opacity:1;pointer-events:auto;transition:none}
 .destello{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:4}
 .destello.on{animation:flash 1.8s ease}
 .titulo{position:absolute;inset:0;z-index:5;background:#0d0b14;color:var(--papel);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 1.2s ease}
@@ -118,9 +129,10 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 #cuenta{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--sello);margin:2px 0 4px}
 #video{display:none;width:100%;border-radius:8px;margin:12px 0 4px;background:#000}
 #carta{font-family:'Caveat',cursive;font-size:1.45rem;line-height:1.35;text-align:left;background:#fff;padding:18px 18px 14px;margin:14px 0 10px;border-radius:4px;box-shadow:0 6px 18px rgba(74,55,40,.18);transform:rotate(-.6deg);white-space:pre-line}
-#firma{font-family:'Caveat',cursive;font-size:1.55rem;color:var(--sello);margin-bottom:16px}
+#firma{font-family:'Caveat',cursive;font-size:1.55rem;color:var(--sello);margin-bottom:18px}
+.apuesta{font-size:1.1rem;margin-bottom:8px}
 .btn{display:inline-block;font:inherit;font-size:1rem;text-decoration:none;background:var(--terracota);color:#fff;border:2px solid var(--terracota);border-radius:999px;padding:11px 26px;margin:4px;cursor:pointer}
-.btn.sec{background:transparent;color:var(--terracota)}
+.btn.sec{background:transparent;color:var(--terracota);margin-top:14px}
 #toca{font-size:.8rem;opacity:.5;margin-top:10px}
 .lluvia{position:fixed;top:-40px;pointer-events:none;z-index:9;animation:caer linear forwards}
 </style>
@@ -153,7 +165,12 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
       <rect class="cielo" id="c-atardecer" y="-215" width="380" height="475" fill="url(#g-atardecer)"/>
       <rect class="cielo on" id="c-noche" y="-215" width="380" height="475" fill="url(#g-noche)"/>
       <g id="estrellas"></g>
-      <line id="fugaz" x1="40" y1="-196" x2="70" y2="-180" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- La estrella de mamá -->
+      <g id="mama">
+        <circle cx="335" cy="-172" r="9" fill="#fff" opacity=".18"/>
+        <path d="M335 -184L337.2 -174.2 347 -172 337.2 -169.8 335 -160 332.8 -169.8 323 -172 332.8 -174.2Z" fill="#fff8d6"/>
+      </g>
+      <line id="fugaz" x1="330" y1="-168" x2="314" y2="-153" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
       <circle id="astro" r="20" fill="#f4f1de" style="transform:translate(50px,-150px)"/>
       <g id="nubes" fill="#fff">
         <g class="n1"><ellipse cx="60" cy="-40" rx="26" ry="10"/><ellipse cx="80" cy="-48" rx="20" ry="11"/><ellipse cx="42" cy="-45" rx="14" ry="8"/></g>
@@ -293,6 +310,7 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
     </svg>
     <div class="polaroid" id="polaroid"><img id="fotoP" alt=""></div>
     <div class="capa" id="capa"><img id="fotoG" alt=""></div>
+    <canvas id="raspa"></canvas>
     <div class="destello" id="destello"></div>
     <div class="titulo" id="titulo"><p class="t1" id="t1"></p><p class="t2">Una historia real</p></div>
   </div>
@@ -310,8 +328,10 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
       <video id="video" controls playsinline preload="metadata"></video>
       <p id="carta"></p>
       <p id="firma"></p>
-      <a class="btn" id="wa" target="_blank" rel="noopener">Escríbeme ahora</a>
-      <button class="btn sec" id="otra">Ver de nuevo</button>
+      <p class="apuesta">¿Tú qué crees que será?</p>
+      <a class="btn" id="nino" target="_blank" rel="noopener">Niño 💙</a>
+      <a class="btn" id="nina" target="_blank" rel="noopener">Niña 💗</a>
+      <p><button class="btn sec" id="otra">Ver de nuevo</button></p>
     </div>
     <p id="toca">Toca la pantalla para avanzar</p>
   </div>
@@ -319,6 +339,7 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 
 <audio id="audio" loop></audio>
 <audio id="voz"></audio>
+<audio id="latido"></audio>
 
 <script>
 const CONFIG = {
@@ -359,7 +380,8 @@ const capitulos = [
   {modo:"dibujo", cielo:"noche",     escala:1.1, edad:"", uniforme:true, novia:true, fugaz:true, espera:true, foto:"", texto:"Y ahora me toca a mí..."},
   {modo:"dibujo", cielo:"amanecer",  escala:1.1, edad:"", uniforme:true, novia:true, brote:true, revela:true, foto:"", texto:`¡${C.novia} y yo vamos a ser papás!`},
   {modo:"foto",   cielo:"amanecer",  escala:1.1, edad:"", uniforme:true, novia:true, brote:true, foto:"familia.jpg", pos:"50% 50%", texto:`Y ${C.perro} va a ser hermano mayor.`},
-  {modo:"foto",   cielo:"amanecer",  escala:1.1, edad:"", uniforme:true, novia:true, brote:true, final:true, foto:"ecografia.jpg", encaje:"contain",
+  {modo:"foto",   cielo:"amanecer",  escala:1.1, edad:"", uniforme:true, novia:true, brote:true, final:true, raspa:true, foto:"ecografia.jpg", encaje:"contain",
+   antes:"Alguien quiere conocerte. Raspa la tarjeta dorada.",
    texto:`Vas a ser ${C.titulo}, ${C.hermana}.`}
 ];
 
@@ -391,8 +413,9 @@ $("firma").textContent = `Tu ${C.apodo}, ${C.novia} y ${C.perro}`;
 const dias = Math.ceil((new Date(C.fechaParto + "T00:00:00") - new Date()) / 864e5);
 $("cuenta").textContent = C.mesParto + (dias > 0 ? ` · faltan unos ${dias} días` : "");
 
-if (C.whatsapp) $("wa").href = `https://wa.me/${C.whatsapp}?text=` + encodeURIComponent("¡¡Acabo de ver la carta!!");
-else $("wa").style.display = "none";
+const wa = "https://wa.me/" + (C.whatsapp || "") + "?text=";
+$("nino").href = wa + encodeURIComponent("¡Ya vi la carta! 😭💛 Yo digo que será niño 💙");
+$("nina").href = wa + encodeURIComponent("¡Ya vi la carta! 😭💛 Yo digo que será niña 💗");
 
 /* Busca los archivos opcionales de audio y video */
 async function existe(lista){
@@ -403,12 +426,13 @@ async function existe(lista){
 }
 existe(["cancion.mp3", "cancion.m4a"]).then(u => cancionUrl = u);
 existe(["voz.mp3", "voz.m4a", "voz.mp4"]).then(u => { if (u) $("voz").src = u; });
+existe(["latido.mp3", "latido.m4a", "latido.mp4"]).then(u => { if (u) $("latido").src = u; });
 existe(["video.mp4"]).then(u => {
   if (!u) return;
   const v = $("video");
   v.src = u;
   v.style.display = "block";
-  v.addEventListener("play", () => $("audio").pause());
+  v.addEventListener("play", () => { $("audio").pause(); $("latido").pause(); });
   v.addEventListener("ended", () => { if (cancionUrl) $("audio").play().catch(() => {}); });
 });
 
@@ -488,19 +512,92 @@ function corazones(){
   }
 }
 
-function sonarVoz(){
-  const v = $("voz");
-  if (!v.getAttribute("src")) return;
-  $("audio").volume = .25;
-  v.onended = () => { $("audio").volume = 1; };
-  v.currentTime = 0;
-  v.play().catch(() => { $("audio").volume = 1; });
+/* Suena un audio encima de la música, bajándole el volumen */
+function sonar(a){
+  if (!a.getAttribute("src")) return;
+  $("audio").volume = .2;
+  a.onended = () => { $("audio").volume = 1; };
+  a.currentTime = 0;
+  a.play().catch(() => { $("audio").volume = 1; });
 }
+
+/* ---- Raspa y descubre ---- */
+const cv = $("raspa");
+let raspando = false, raspado = true, ux = 0, uy = 0;
+
+function prepararRaspa(){
+  const dpr = window.devicePixelRatio || 1;
+  cv.width = cv.clientWidth * dpr;
+  cv.height = cv.clientHeight * dpr;
+  const x = cv.getContext("2d");
+  x.globalCompositeOperation = "source-over";
+  const g = x.createLinearGradient(0, 0, cv.width, cv.height);
+  g.addColorStop(0, "#d9a441"); g.addColorStop(.5, "#f4dc9a"); g.addColorStop(1, "#c98f2e");
+  x.fillStyle = g;
+  x.fillRect(0, 0, cv.width, cv.height);
+  x.fillStyle = "rgba(255,255,255,.35)";
+  for (let n = 0; n < 60; n++) {
+    x.font = `${(10 + Math.random() * 16) * dpr}px serif`;
+    x.fillText("♥", Math.random() * cv.width, Math.random() * cv.height);
+  }
+  x.fillStyle = "#6b4a14";
+  x.textAlign = "center";
+  x.font = `700 ${30 * dpr}px Caveat, cursive`;
+  x.fillText("Raspa aquí con tu dedo", cv.width / 2, cv.height / 2);
+  x.font = `${15 * dpr}px Georgia, serif`;
+  x.fillText("Alguien quiere conocerte", cv.width / 2, cv.height / 2 + 30 * dpr);
+  raspado = false;
+  cv.classList.add("on");
+}
+function punto(e){
+  const r = cv.getBoundingClientRect(), d = cv.width / r.width;
+  return [(e.clientX - r.left) * d, (e.clientY - r.top) * d];
+}
+function raspar(e){
+  const x = cv.getContext("2d"), [px, py] = punto(e);
+  x.globalCompositeOperation = "destination-out";
+  x.lineWidth = cv.width * .13;
+  x.lineCap = "round";
+  x.beginPath();
+  x.moveTo(ux, uy);
+  x.lineTo(px + .1, py + .1);
+  x.stroke();
+  ux = px; uy = py;
+}
+function destapado(){
+  const d = cv.getContext("2d").getImageData(0, 0, cv.width, cv.height).data;
+  let total = 0, vacio = 0;
+  for (let i = 3; i < d.length; i += 4 * 23) { total++; if (d[i] === 0) vacio++; }
+  return vacio / total;
+}
+function descubrir(){
+  raspado = true;
+  cv.classList.remove("on");
+  $("extras").classList.add("on");
+  escribir(capitulos[paso].texto, () => {});
+  lluvia();
+  if (navigator.vibrate) navigator.vibrate(120);
+  sonar($("latido"));
+}
+cv.addEventListener("pointerdown", e => {
+  if (raspado) return;
+  raspando = true;
+  [ux, uy] = punto(e);
+  try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+  raspar(e);
+});
+cv.addEventListener("pointermove", e => { if (raspando) raspar(e); });
+["pointerup", "pointercancel"].forEach(t => cv.addEventListener(t, () => {
+  if (!raspando) return;
+  raspando = false;
+  if (destapado() > .3) descubrir();
+}));
 
 function mostrar(i){
   clearTimeout(reloj); clearInterval(tecla);
   paso = i;
   const c = capitulos[i], k = CIELOS[c.cielo];
+  if (!$("latido").paused) { $("latido").pause(); $("audio").volume = 1; }
   document.querySelectorAll(".cielo").forEach(r => r.classList.toggle("on", r.id === "c-" + c.cielo));
   $("astro").style.transform = `translate(${k.x}px,${k.y}px)`;
   $("astro").style.fill = k.astro;
@@ -510,6 +607,8 @@ function mostrar(i){
   $("aves").style.opacity = k.aves;
   $("estrellas").classList.toggle("on", c.cielo === "noche");
   $("luces").classList.toggle("on", c.cielo === "noche");
+  $("mama").classList.toggle("on", c.cielo === "noche" || !!c.brote);
+  if (!c.brote) $("mama").classList.remove("destella");
   $("yo").style.transform = `scale(${c.escala})`;
   $("yo").classList.toggle("adulto", !!c.uniforme);
   $("yoPos").style.transform = c.abrazo ? "translateX(-34px)" : "";
@@ -524,17 +623,21 @@ function mostrar(i){
   if (c.revela) {
     reiniciar($("destello"), "on");
     reiniciar($("mami"), "salta");
+    reiniciar($("mama"), "destella");
     explosion();
     if (navigator.vibrate) navigator.vibrate([80, 60, 160]);
-    sonarVoz();
+    sonar($("voz"));
   }
   fotoGrande(c);
   polaroid(c);
+  if (c.raspa) prepararRaspa();
+  else { cv.classList.remove("on"); raspado = true; }
   $("edad").textContent = c.edad || "";
   [...$("barras").children].forEach((b, n) => b.classList.toggle("on", n <= i));
-  $("extras").classList.toggle("on", !!c.final);
+  $("extras").classList.toggle("on", !!c.final && !c.raspa);
   $("toca").style.display = (c.final || c.espera) ? "none" : "block";
-  escribir(c.texto, () => {
+  escribir(c.raspa ? c.antes : c.texto, () => {
+    if (c.raspa) return;
     if (c.final) lluvia();
     else if (c.espera) $("espera").classList.add("on");
     else reloj = setTimeout(() => mostrar(i + 1), PAUSA);
@@ -542,6 +645,7 @@ function mostrar(i){
 }
 
 function escribir(txt, fin){
+  clearInterval(tecla);
   let n = 0;
   escribiendo = true; textoActual = txt; alTerminar = fin;
   $("frase").textContent = "";
@@ -587,7 +691,7 @@ $("sobre").addEventListener("click", () => {
   }, 1600);
 });
 $("peli").addEventListener("click", e => {
-  if (e.target.closest("button,a,video")) return;
+  if (e.target.closest("button,a,video,canvas")) return;
   const c = capitulos[paso];
   if (escribiendo) terminar();
   else if (!c.final && !c.espera) mostrar(paso + 1);
