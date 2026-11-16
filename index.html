@@ -21,6 +21,14 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 @keyframes fugaz{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:0;transform:translate(240px,130px)}}
 @keyframes soltar{from{opacity:0;transform:translate(-50%,-30px) rotate(8deg)}to{opacity:1;transform:translate(-50%,0) rotate(-3deg)}}
 @keyframes titilar{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes volar{from{transform:translate(-50%,-50%) scale(.3);opacity:1}to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.2);opacity:0}}
+@keyframes parpadeo{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+@keyframes respira{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.018)}}
+@keyframes mecer{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
+@keyframes humo{0%{opacity:0;transform:translate(0,0) scale(.6)}20%{opacity:.55}100%{opacity:0;transform:translate(10px,-44px) scale(2.2)}}
+@keyframes vuelo{from{transform:translate(-40px,-70px)}to{transform:translate(420px,-120px)}}
+@keyframes salto{0%,100%{transform:translateY(0)}25%{transform:translateY(-16px)}50%{transform:translateY(0)}72%{transform:translateY(-8px)}}
+@keyframes subir{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translateY(-130px) scale(1.3)}}
 
 /* Sobre */
 #intro{align-self:center;text-align:center;padding:20px;color:var(--papel);animation:aparecer 1s ease both}
@@ -40,7 +48,7 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 #peli{display:none;position:relative;width:100%;max-width:460px;min-height:100vh;min-height:100dvh;background:var(--papel);flex-direction:column;cursor:pointer}
 #peli.activa{display:flex;animation:aparecer 1s ease both}
 .barras{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:3px;z-index:6}
-.barras i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.5)}
+.barras i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.4)}
 .barras i.on{background:#fff}
 #sonido{display:none;position:absolute;top:22px;right:12px;z-index:6;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.35);color:#fff;font-size:16px;cursor:pointer}
 .visual{position:relative;overflow:hidden;background:#171c3a}
@@ -48,22 +56,41 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 .cielo{opacity:0;transition:opacity 2.5s ease}
 .cielo.on{opacity:1}
 #astro{transition:transform 2.5s ease,fill 2.5s ease}
-#estrellas{opacity:0;transition:opacity 2.5s ease}
-#estrellas.on{opacity:1}
-#estrellas circle:nth-child(3n){animation:titilar 2.4s infinite}
-#nubes{opacity:0;transition:opacity 2.5s ease}
+#estrellas,#luces{opacity:0;transition:opacity 2.5s ease}
+#estrellas.on,#luces.on{opacity:1}
+#estrellas circle:nth-child(3n),#luces circle:nth-child(4n){animation:titilar 2.4s infinite}
+#nubes,#aves{opacity:0;transition:opacity 2.5s ease}
 .n1{animation:deriva 38s linear infinite alternate}
 .n2{animation:deriva 52s linear infinite alternate-reverse}
+.ave{animation:vuelo 26s linear infinite}
+.a2{animation-duration:34s;animation-delay:-12s}
 #fugaz{opacity:0}
 #fugaz.ir{animation:fugaz 1.6s ease-out 1.2s}
 #suelo,#ventana{transition:fill 2.5s ease}
+.humo{transform-box:fill-box;transform-origin:center;opacity:0;animation:humo 4s linear infinite}
+.h2{animation-delay:1.3s}
+.h3{animation-delay:2.6s}
+.hojas{transform-box:fill-box;transform-origin:50% 100%;animation:mecer 5s ease-in-out infinite}
 #yo,#arbol{transform-box:fill-box;transform-origin:50% 100%;transition:transform 1.8s cubic-bezier(.3,1.3,.5,1)}
 #yo{transform:scale(.42)}
 #arbol{transform:scale(.3)}
-#novia,#brote,#perro{opacity:0;transition:opacity 1.8s ease}
-#novia.on,#brote.on,#perro.on{opacity:1}
+#yoPos{transition:transform 1.6s ease}
+.nino,.poli{transition:opacity 1.2s ease}
+.poli{opacity:0}
+#yo.adulto .poli{opacity:1}
+#yo.adulto .nino{opacity:0}
+.ojo{transform-box:fill-box;transform-origin:center;animation:parpadeo 4.2s infinite}
+.respira{transform-box:fill-box;transform-origin:50% 100%;animation:respira 3.6s ease-in-out infinite}
+#mami.salta{animation:salto 1.4s ease .4s}
+#novia{transform:translateX(70px)}
+#perro{transform:translateX(150px)}
+#novia,#perro{opacity:0;transition:opacity 1.2s ease,transform 1.8s ease-out}
+#novia.on,#perro.on{opacity:1;transform:none}
+#brote{opacity:0;transition:opacity 1.8s ease}
+#brote.on{opacity:1}
 .pulso{transform-box:fill-box;transform-origin:center;animation:latir 1.4s infinite}
 .cola{transform-box:fill-box;transform-origin:0% 100%;animation:mover .45s infinite}
+.sube{position:absolute;z-index:2;pointer-events:none;color:#a8432f;animation:subir 2.2s ease-out both}
 .polaroid{display:none;position:absolute;top:9%;left:50%;width:54%;padding:8px 8px 28px;background:#fff;box-shadow:0 10px 24px rgba(0,0,0,.35);transform:translate(-50%,0) rotate(-3deg);z-index:2}
 .polaroid.on{display:block;animation:soltar .9s cubic-bezier(.3,1.3,.5,1) both}
 .polaroid img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
@@ -73,12 +100,23 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 .capa::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--papel) 0,rgba(251,245,234,0) 16%),linear-gradient(to bottom,rgba(0,0,0,.35) 0,rgba(0,0,0,0) 14%)}
 .destello{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:4}
 .destello.on{animation:flash 1.8s ease}
+.titulo{position:absolute;inset:0;z-index:5;background:#0d0b14;color:var(--papel);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 1.2s ease}
+.titulo.on{opacity:1}
+.t1{font-family:'Caveat',cursive;font-size:2.6rem;line-height:1.1}
+.t2{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;opacity:.6;margin-top:16px}
+.chispa{position:absolute;left:50%;top:55%;z-index:5;pointer-events:none;animation:volar 1.7s ease-out forwards}
 .panel{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:16px 24px 30px;text-align:center}
 #edad{font-family:'Caveat',cursive;font-size:1.6rem;color:var(--sello);min-height:1.6em}
 #frase{font-size:1.3rem;line-height:1.45;min-height:4.4em}
+#espera{display:none}
+#espera.on{display:block;animation:aparecer .8s ease both}
+#corazon{width:88px;height:88px;border-radius:50%;border:0;background:var(--sello);color:#fff;font-size:40px;cursor:pointer;animation:latir .9s infinite;box-shadow:0 8px 22px rgba(168,67,47,.45)}
+#espera p{font-family:'Caveat',cursive;font-size:1.45rem;color:var(--sello);margin-top:8px}
 #extras{display:none;width:100%}
 #extras.on{display:block;animation:aparecer 1.2s ease 1s both}
-#cuenta{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--sello);margin:6px 0 4px}
+.estreno{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;opacity:.6;margin-top:6px}
+#cuenta{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--sello);margin:2px 0 4px}
+#video{display:none;width:100%;border-radius:8px;margin:12px 0 4px;background:#000}
 #carta{font-family:'Caveat',cursive;font-size:1.45rem;line-height:1.35;text-align:left;background:#fff;padding:18px 18px 14px;margin:14px 0 10px;border-radius:4px;box-shadow:0 6px 18px rgba(74,55,40,.18);transform:rotate(-.6deg);white-space:pre-line}
 #firma{font-family:'Caveat',cursive;font-size:1.55rem;color:var(--sello);margin-bottom:16px}
 .btn{display:inline-block;font:inherit;font-size:1rem;text-decoration:none;background:var(--terracota);color:#fff;border:2px solid var(--terracota);border-radius:999px;padding:11px 26px;margin:4px;cursor:pointer}
@@ -102,7 +140,7 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
   <div class="barras" id="barras"></div>
   <button id="sonido" aria-label="Silenciar música">♪</button>
 
-  <div class="visual">
+  <div class="visual" id="visual">
     <svg viewBox="0 -215 380 475" aria-hidden="true">
       <defs>
         <linearGradient id="g-amanecer" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ee9c78"/><stop offset="1" stop-color="#fbe6c8"/></linearGradient>
@@ -121,18 +159,37 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
         <g class="n1"><ellipse cx="60" cy="-40" rx="26" ry="10"/><ellipse cx="80" cy="-48" rx="20" ry="11"/><ellipse cx="42" cy="-45" rx="14" ry="8"/></g>
         <g class="n2"><ellipse cx="290" cy="40" rx="24" ry="9"/><ellipse cx="308" cy="33" rx="18" ry="10"/><ellipse cx="272" cy="36" rx="13" ry="7"/></g>
       </g>
-      <path d="M0 222Q95 196 190 214T380 206V260H0Z" fill="#000" opacity=".08"/>
+      <g id="aves" fill="none" stroke="#3a3f52" stroke-width="1.5" stroke-linecap="round">
+        <path class="ave" d="M0 0q4-5 8 0q4-5 8 0"/>
+        <path class="ave a2" d="M0 30q3-4 6 0q3-4 6 0"/>
+      </g>
+      <!-- Montañas -->
+      <path d="M0 215L60 150 120 190 190 118 260 185 320 138 380 195V225H0Z" fill="#000" opacity=".10"/>
+      <path d="M0 222L80 175 150 205 230 160 300 200 380 170V225H0Z" fill="#000" opacity=".13"/>
+      <g id="luces"></g>
       <rect id="suelo" y="220" width="380" height="40" fill="#6f6a80"/>
+      <g id="pasto"></g>
       <!-- Casa -->
+      <circle class="humo" cx="66" cy="146" r="4" fill="#fff"/>
+      <circle class="humo h2" cx="66" cy="146" r="4" fill="#fff"/>
+      <circle class="humo h3" cx="66" cy="146" r="4" fill="#fff"/>
+      <rect x="62" y="150" width="8" height="18" fill="#7a4a3a"/>
       <rect x="22" y="176" width="56" height="44" fill="#e9d5b7"/>
       <polygon points="16,178 50,150 84,178" fill="#9c4f38"/>
-      <rect x="44" y="196" width="12" height="24" fill="#7a5a44"/>
+      <rect x="44" y="196" width="12" height="24" rx="1" fill="#7a5a44"/>
+      <circle cx="53" cy="209" r="1" fill="#e2b93b"/>
       <rect id="ventana" x="60" y="188" width="11" height="11" fill="#ffd76a"/>
+      <path d="M65.5 188v11M60 193.5h11" stroke="#7a5a44" stroke-width="1"/>
+      <rect x="27" y="188" width="11" height="11" fill="#cfe0e6"/>
+      <path d="M32.5 188v11M27 193.5h11" stroke="#7a5a44" stroke-width="1"/>
       <!-- Árbol que crece -->
       <g id="arbol">
         <rect x="336" y="178" width="8" height="42" fill="#7a5a44"/>
-        <circle cx="340" cy="162" r="26" fill="#6f8060"/>
-        <circle cx="322" cy="176" r="15" fill="#7d8f6c"/><circle cx="358" cy="176" r="15" fill="#7d8f6c"/>
+        <g class="hojas">
+          <circle cx="340" cy="162" r="26" fill="#6f8060"/>
+          <circle cx="322" cy="176" r="15" fill="#7d8f6c"/><circle cx="358" cy="176" r="15" fill="#7d8f6c"/>
+          <circle cx="332" cy="152" r="9" fill="#86996f"/><circle cx="348" cy="156" r="9" fill="#86996f"/>
+        </g>
       </g>
       <!-- Brote nuevo -->
       <g id="brote">
@@ -142,45 +199,83 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
       </g>
       <g transform="translate(35 30)">
         <!-- Mami Cynthia -->
-        <g>
-          <ellipse cx="85" cy="97" rx="16" ry="23" fill="#2b2020"/>
-          <rect x="78" y="180" width="5" height="10" fill="#d39a73"/><rect x="87" y="180" width="5" height="10" fill="#d39a73"/>
-          <path d="M80 112l-9 28M90 112l13 24" stroke="#d39a73" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-          <path d="M79 104h12l15 76H64z" fill="#c0694a"/>
+        <g id="mami"><g class="respira">
+          <ellipse cx="85" cy="191" rx="20" ry="3.5" fill="#000" opacity=".13"/>
+          <path d="M70 90q-3 26 3 40h24q6-14 3-40z" fill="#2b2020"/>
+          <rect x="78.5" y="176" width="4.5" height="12" fill="#d39a73"/><rect x="87" y="176" width="4.5" height="12" fill="#d39a73"/>
+          <ellipse cx="80" cy="189" rx="4.5" ry="2.2" fill="#f2e6d0"/><ellipse cx="90" cy="189" rx="4.5" ry="2.2" fill="#f2e6d0"/>
+          <path d="M79 112q-8 12-8 27M91 112q9 10 12 24" stroke="#d39a73" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+          <circle cx="71" cy="140" r="3" fill="#d39a73"/><circle cx="103" cy="137" r="3" fill="#d39a73"/>
+          <path d="M78 104q7 3 14 0l14 72q-21 6-42 0z" fill="#c0694a"/>
+          <path d="M64 176q21 6 42 0l-1.2-6q-20 5-39.6 0z" fill="#a85639"/>
+          <rect x="82" y="100" width="6" height="6" fill="#c98d67"/>
           <circle cx="85" cy="90" r="13" fill="#d39a73"/>
           <path d="M72 89a13 13 0 0 1 26 0c-5-6-21-6-26 0z" fill="#2b2020"/>
-          <circle cx="80.5" cy="92" r="1.3" fill="#2b2020"/><circle cx="89.5" cy="92" r="1.3" fill="#2b2020"/>
+          <circle cx="78.5" cy="95.5" r="2.2" fill="#e07a6a" opacity=".45"/><circle cx="91.5" cy="95.5" r="2.2" fill="#e07a6a" opacity=".45"/>
+          <circle class="ojo" cx="80.5" cy="92" r="1.4" fill="#2b2020"/><circle class="ojo" cx="89.5" cy="92" r="1.4" fill="#2b2020"/>
           <path d="M80.5 96.5q4.5 4 9 0" stroke="#a8432f" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-        </g>
+        </g></g>
         <text class="pulso" x="125" y="128" text-anchor="middle" font-size="16" fill="#a8432f">♥</text>
         <!-- Bryan -->
-        <g id="yo">
-          <rect x="154" y="153" width="9" height="37" rx="4" fill="#3a3f52"/><rect x="167" y="153" width="9" height="37" rx="4" fill="#3a3f52"/>
-          <path d="M155 117l-7 27M175 117l7 27" stroke="#4f6b52" stroke-width="5.5" stroke-linecap="round" fill="none"/>
-          <rect x="153" y="110" width="24" height="46" rx="8" fill="#4f6b52"/>
+        <g id="yoPos"><g id="yo"><g class="respira">
+          <ellipse cx="165" cy="191" rx="17" ry="3" fill="#000" opacity=".13"/>
+          <g class="nino">
+            <rect x="155" y="152" width="9" height="35" rx="3" fill="#3a3f52"/><rect x="166" y="152" width="9" height="35" rx="3" fill="#3a3f52"/>
+            <ellipse cx="159" cy="188" rx="6" ry="2.6" fill="#f2f0ea"/><ellipse cx="171" cy="188" rx="6" ry="2.6" fill="#f2f0ea"/>
+            <path d="M155 117q-8 12-7 27M175 117q8 12 7 27" stroke="#4f6b52" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+            <rect x="153" y="110" width="24" height="46" rx="8" fill="#4f6b52"/>
+            <path d="M160 111l5 6 5-6" stroke="#6b8a6e" stroke-width="1.6" fill="none"/>
+          </g>
+          <g class="poli">
+            <rect x="155" y="152" width="9" height="35" rx="3" fill="#2f3b2f"/><rect x="166" y="152" width="9" height="35" rx="3" fill="#2f3b2f"/>
+            <ellipse cx="159" cy="188" rx="6" ry="2.6" fill="#1a1a1a"/><ellipse cx="171" cy="188" rx="6" ry="2.6" fill="#1a1a1a"/>
+            <path d="M155 117q-8 12-7 27M175 117q8 12 7 27" stroke="#cdb48c" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+            <rect x="153" y="110" width="24" height="46" rx="8" fill="#cdb48c"/>
+            <path d="M165 112v38" stroke="#b39c75" stroke-width="1"/>
+            <rect x="153" y="150" width="24" height="4" fill="#1a1a1a"/>
+            <rect x="163" y="150" width="4" height="4" fill="#e2b93b"/>
+            <rect x="153.5" y="111" width="6" height="3" rx="1" fill="#2f3b2f"/><rect x="170.5" y="111" width="6" height="3" rx="1" fill="#2f3b2f"/>
+            <circle cx="171" cy="123" r="2.2" fill="#e2b93b"/>
+          </g>
+          <circle cx="148" cy="145" r="3" fill="#d39a73"/><circle cx="182" cy="145" r="3" fill="#d39a73"/>
+          <rect x="162" y="105" width="6" height="6" fill="#c98d67"/>
           <circle cx="165" cy="96" r="13" fill="#d39a73"/>
           <path d="M152 95a13 13 0 0 1 26 0c-5-7-21-7-26 0z" fill="#1f1a1a"/>
-          <circle cx="160.5" cy="98" r="1.3" fill="#1f1a1a"/><circle cx="169.5" cy="98" r="1.3" fill="#1f1a1a"/>
+          <circle cx="158.5" cy="101.5" r="2.2" fill="#e07a6a" opacity=".4"/><circle cx="171.5" cy="101.5" r="2.2" fill="#e07a6a" opacity=".4"/>
+          <circle class="ojo" cx="160.5" cy="98" r="1.4" fill="#1f1a1a"/><circle class="ojo" cx="169.5" cy="98" r="1.4" fill="#1f1a1a"/>
           <path d="M160.5 102.5q4.5 4 9 0" stroke="#7a3b2a" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-        </g>
+          <g class="poli">
+            <path d="M151 92q14-22 28 0z" fill="#2f3b2f"/>
+            <rect x="150" y="90" width="30" height="4" rx="1.5" fill="#1a1a1a"/>
+            <rect x="152" y="89" width="26" height="1.6" fill="#e2b93b"/>
+            <circle cx="165" cy="85" r="2.2" fill="#e2b93b"/>
+          </g>
+        </g></g></g>
         <!-- Mary Cielo -->
-        <g id="novia">
-          <ellipse cx="240" cy="101" rx="15" ry="27" fill="#1f1a1a"/>
-          <rect x="233" y="180" width="5" height="10" fill="#d39a73"/><rect x="242" y="180" width="5" height="10" fill="#d39a73"/>
-          <path d="M235 112l-11 24M245 112l9 28" stroke="#d39a73" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-          <path d="M234 105h12l14 75h-40z" fill="#d9a441"/>
+        <g id="novia"><g class="respira">
+          <ellipse cx="240" cy="191" rx="19" ry="3.5" fill="#000" opacity=".13"/>
+          <path d="M226 92q-4 30 2 46h24q6-16 2-46z" fill="#1f1a1a"/>
+          <rect x="233.5" y="176" width="4.5" height="12" fill="#d39a73"/><rect x="242" y="176" width="4.5" height="12" fill="#d39a73"/>
+          <ellipse cx="235" cy="189" rx="4.5" ry="2.2" fill="#e88aa0"/><ellipse cx="245" cy="189" rx="4.5" ry="2.2" fill="#e88aa0"/>
+          <path d="M234 113q-9 10-11 24M246 113q8 12 8 27" stroke="#d39a73" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+          <circle cx="223" cy="138" r="3" fill="#d39a73"/><circle cx="254" cy="141" r="3" fill="#d39a73"/>
+          <path d="M233 105q7 3 14 0l13 71q-20 6-40 0z" fill="#d9a441"/>
+          <path d="M220 176q20 6 40 0l-1.1-6q-19 5-37.8 0z" fill="#b98a2f"/>
+          <rect x="237" y="101" width="6" height="6" fill="#c98d67"/>
           <circle cx="240" cy="92" r="13" fill="#d39a73"/>
           <path d="M227 91a13 13 0 0 1 26 0c-5-6-21-6-26 0z" fill="#1f1a1a"/>
           <path d="M228.5 86q11.5-8 23 0" stroke="#f2e6d0" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="233" cy="98" r="2.2" fill="#e07a6a" opacity=".45"/><circle cx="247" cy="98" r="2.2" fill="#e07a6a" opacity=".45"/>
           <circle cx="235.5" cy="94" r="3.4" fill="none" stroke="#b98a8a" stroke-width="1"/><circle cx="244.5" cy="94" r="3.4" fill="none" stroke="#b98a8a" stroke-width="1"/>
           <path d="M238.9 94h2.2" stroke="#b98a8a" stroke-width="1"/>
-          <circle cx="235.5" cy="94" r="1" fill="#1f1a1a"/><circle cx="244.5" cy="94" r="1" fill="#1f1a1a"/>
+          <circle class="ojo" cx="235.5" cy="94" r="1.1" fill="#1f1a1a"/><circle class="ojo" cx="244.5" cy="94" r="1.1" fill="#1f1a1a"/>
           <path d="M236 99.5q4 3.5 8 0" stroke="#a8432f" stroke-width="1.4" stroke-linecap="round" fill="none"/>
           <text class="pulso" x="240" y="158" text-anchor="middle" font-size="13" fill="#fff">♥</text>
-        </g>
+        </g></g>
       </g>
       <!-- Drako -->
       <g id="perro">
+        <ellipse cx="234" cy="221" rx="17" ry="2.5" fill="#000" opacity=".13"/>
         <path class="cola" d="M248 203q4-2 4-7" fill="none" stroke="#4b4f58" stroke-width="2.5" stroke-linecap="round"/>
         <rect x="224" y="200" width="24" height="12" rx="5" fill="#4b4f58"/>
         <rect x="225" y="210" width="5" height="10" rx="1.5" fill="#4b4f58"/>
@@ -192,19 +287,27 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
         <rect x="216" y="188" width="15" height="13" rx="5" fill="#4b4f58"/>
         <rect x="215" y="195" width="8" height="5" rx="2" fill="#f2f0ea"/>
         <circle cx="215.6" cy="196" r="1.2" fill="#222"/>
+        <circle class="ojo" cx="221.5" cy="192.5" r="1" fill="#fff"/>
         <rect x="231" y="199" width="4" height="13" fill="#c0392b"/>
       </g>
     </svg>
     <div class="polaroid" id="polaroid"><img id="fotoP" alt=""></div>
     <div class="capa" id="capa"><img id="fotoG" alt=""></div>
     <div class="destello" id="destello"></div>
+    <div class="titulo" id="titulo"><p class="t1" id="t1"></p><p class="t2">Una historia real</p></div>
   </div>
 
   <div class="panel">
     <p id="edad"></p>
     <p id="frase"></p>
+    <div id="espera">
+      <button id="corazon" aria-label="Tocar el corazón">♥</button>
+      <p>Toca el corazón</p>
+    </div>
     <div id="extras">
+      <p class="estreno">Próximo estreno</p>
       <p id="cuenta"></p>
+      <video id="video" controls playsinline preload="metadata"></video>
       <p id="carta"></p>
       <p id="firma"></p>
       <a class="btn" id="wa" target="_blank" rel="noopener">Escríbeme ahora</a>
@@ -215,6 +318,7 @@ body{background:var(--fondo);color:var(--tinta);font-family:'Fraunces',Georgia,s
 </section>
 
 <audio id="audio" loop></audio>
+<audio id="voz"></audio>
 
 <script>
 const CONFIG = {
@@ -226,7 +330,6 @@ const CONFIG = {
   mesParto: "mayo de 2027",
   fechaParto: "2027-05-23",
   whatsapp: "",
-  cancion: "cancion.mp3",
   carta: `Mami Cynthia:
 
 Cuando mamá partió yo tenía 2 años, y tú ocupaste su lugar. Hiciste todo por mí.
@@ -237,57 +340,85 @@ Ahora me toca a mí decirle a alguien lo que tú me decías: «te amo mucho». Y
 };
 const C = CONFIG;
 
-/* modo "dibujo": escena animada (la foto, si existe, sale como polaroid)
+/* modo "titulo": pantalla de apertura
+   modo "dibujo": escena animada (la foto, si existe, sale como polaroid)
    modo "foto": la foto ocupa toda la pantalla */
 const capitulos = [
+  {modo:"titulo", cielo:"noche",     escala:.42, edad:"", foto:"", texto:""},
   {modo:"dibujo", cielo:"noche",     escala:.42, edad:"2 años",  foto:"foto1.jpg", texto:"Yo tenía 2 años cuando mamá partió."},
-  {modo:"dibujo", cielo:"amanecer",  escala:.46, edad:"",        foto:"",          texto:"Y tú, siendo tan joven, decidiste ser mi mamá."},
+  {modo:"dibujo", cielo:"amanecer",  escala:.46, edad:"", abrazo:true, foto:"",    texto:"Y tú, siendo tan joven, decidiste ser mi mamá."},
   {modo:"dibujo", cielo:"dia",       escala:.56, edad:"5 años",  foto:"foto2.jpg", texto:"Hacías todo por mí. Todo."},
   {modo:"dibujo", cielo:"dia",       escala:.72, edad:"9 años",  foto:"foto3.jpg", texto:"Y siempre me decías lo mismo: «Hijito lindo, te amo mucho»."},
   {modo:"dibujo", cielo:"atardecer", escala:.9,  edad:"15 años", foto:"foto4.jpg", texto:"En mi adolescencia, cuando más te necesité, no me soltaste."},
   {modo:"dibujo", cielo:"atardecer", escala:1.05,edad:"18 años", foto:"foto5.jpg", texto:"Y mientras me preparaba para ser quien soy hoy, estuviste en cada paso."},
   {modo:"foto",   cielo:"atardecer", escala:1.1, edad:"Juntos",  foto:"viaje.jpg",    texto:"Por eso estás en todos mis recuerdos: en los viajes..."},
   {modo:"foto",   cielo:"noche",     escala:1.1, edad:"",        foto:"mirador.jpg",  texto:"...en las noches..."},
-  {modo:"foto",   cielo:"noche",     escala:1.1, edad:"Mi ascenso", foto:"ascenso.jpg", pos:"50% 45%", texto:"...y el día de mi ascenso, ahí estabas. Como siempre."},
-  {modo:"foto",   cielo:"noche",     escala:1.1, edad:"",        foto:"nosotros.jpg", texto:`Siempre te lo digo y hoy te lo repito: te amo y te admiro, ${C.hermana}.`},
-  {modo:"dibujo", cielo:"noche",     escala:1.1, edad:"Hoy",     foto:"", texto:"Todo lo que sé sobre cuidar a alguien lo aprendí de ti."},
-  {modo:"dibujo", cielo:"noche",     escala:1.1, edad:"", novia:true, fugaz:true, foto:"", texto:"Y ahora me toca a mí..."},
-  {modo:"dibujo", cielo:"amanecer",  escala:1.1, edad:"", novia:true, brote:true, destello:true, foto:"", texto:`¡${C.novia} y yo vamos a ser papás!`},
-  {modo:"foto",   cielo:"amanecer",  escala:1.1, edad:"", novia:true, brote:true, foto:"familia.jpg", pos:"50% 50%", texto:`Y ${C.perro} va a ser hermano mayor.`},
-  {modo:"foto",   cielo:"amanecer",  escala:1.1, edad:"", novia:true, brote:true, final:true, foto:"ecografia.jpg", encaje:"contain",
+  {modo:"foto",   cielo:"noche",     escala:1.1, edad:"Mi ascenso", uniforme:true, foto:"ascenso.jpg", pos:"50% 45%", texto:"...y el día de mi ascenso, ahí estabas. Como siempre."},
+  {modo:"foto",   cielo:"noche",     escala:1.1, edad:"", uniforme:true, foto:"nosotros.jpg", texto:`Siempre te lo digo y hoy te lo repito: te amo y te admiro, ${C.hermana}.`},
+  {modo:"dibujo", cielo:"noche",     escala:1.1, edad:"Hoy", uniforme:true, foto:"", texto:"Todo lo que sé sobre cuidar a alguien lo aprendí de ti."},
+  {modo:"dibujo", cielo:"noche",     escala:1.1, edad:"", uniforme:true, novia:true, fugaz:true, espera:true, foto:"", texto:"Y ahora me toca a mí..."},
+  {modo:"dibujo", cielo:"amanecer",  escala:1.1, edad:"", uniforme:true, novia:true, brote:true, revela:true, foto:"", texto:`¡${C.novia} y yo vamos a ser papás!`},
+  {modo:"foto",   cielo:"amanecer",  escala:1.1, edad:"", uniforme:true, novia:true, brote:true, foto:"familia.jpg", pos:"50% 50%", texto:`Y ${C.perro} va a ser hermano mayor.`},
+  {modo:"foto",   cielo:"amanecer",  escala:1.1, edad:"", uniforme:true, novia:true, brote:true, final:true, foto:"ecografia.jpg", encaje:"contain",
    texto:`Vas a ser ${C.titulo}, ${C.hermana}.`}
 ];
 
 const VELOCIDAD = 42, PAUSA = 3000;
 const CIELOS = {
-  amanecer:  {x:110, y:150,  astro:"#ffb86b", suelo:"#c9b48a", ventana:"#cfe0e6", nubes:.6},
-  dia:       {x:330, y:-150, astro:"#ffd75e", suelo:"#b9c08a", ventana:"#cfe0e6", nubes:.9},
-  atardecer: {x:295, y:120,  astro:"#ff9a5a", suelo:"#c2a079", ventana:"#ffe08a", nubes:.5},
-  noche:     {x:50,  y:-150, astro:"#f4f1de", suelo:"#6f6a80", ventana:"#ffd76a", nubes:0}
+  amanecer:  {x:110, y:150,  astro:"#ffb86b", suelo:"#c9b48a", ventana:"#cfe0e6", nubes:.6, aves:.6},
+  dia:       {x:330, y:-150, astro:"#ffd75e", suelo:"#b9c08a", ventana:"#cfe0e6", nubes:.9, aves:1},
+  atardecer: {x:295, y:120,  astro:"#ff9a5a", suelo:"#c2a079", ventana:"#ffe08a", nubes:.5, aves:.4},
+  noche:     {x:50,  y:-150, astro:"#f4f1de", suelo:"#6f6a80", ventana:"#ffd76a", nubes:0,  aves:0}
 };
 const $ = id => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+function svg(tag, attrs, padre){
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  $(padre).appendChild(e);
+  return e;
+}
 let paso = 0, reloj, tecla, escribiendo = false, textoActual = "", alTerminar = () => {};
+let cancionUrl = "";
 
 $("para").textContent = "Para " + C.hermana;
 $("de").textContent = "De: tu " + C.apodo;
+$("t1").textContent = `${C.hermana} y ${C.apodo}`;
 $("barras").innerHTML = capitulos.map(() => "<i></i>").join("");
 $("carta").textContent = C.carta;
 $("firma").textContent = `Tu ${C.apodo}, ${C.novia} y ${C.perro}`;
 
 const dias = Math.ceil((new Date(C.fechaParto + "T00:00:00") - new Date()) / 864e5);
-$("cuenta").textContent = `Llega en ${C.mesParto}` + (dias > 0 ? ` · faltan unos ${dias} días` : "");
+$("cuenta").textContent = C.mesParto + (dias > 0 ? ` · faltan unos ${dias} días` : "");
 
 if (C.whatsapp) $("wa").href = `https://wa.me/${C.whatsapp}?text=` + encodeURIComponent("¡¡Acabo de ver la carta!!");
 else $("wa").style.display = "none";
 
-for (let n = 0; n < 46; n++) {
-  const s = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  s.setAttribute("cx", Math.random() * 380);
-  s.setAttribute("cy", -215 + Math.random() * 340);
-  s.setAttribute("r", Math.random() * 1.3 + .5);
-  s.setAttribute("fill", "#fff");
-  $("estrellas").appendChild(s);
+/* Busca los archivos opcionales de audio y video */
+async function existe(lista){
+  for (const u of lista) {
+    try { const r = await fetch(u, {method: "HEAD"}); if (r.ok) return u; } catch (e) {}
+  }
+  return "";
 }
+existe(["cancion.mp3", "cancion.m4a"]).then(u => cancionUrl = u);
+existe(["voz.mp3", "voz.m4a", "voz.mp4"]).then(u => { if (u) $("voz").src = u; });
+existe(["video.mp4"]).then(u => {
+  if (!u) return;
+  const v = $("video");
+  v.src = u;
+  v.style.display = "block";
+  v.addEventListener("play", () => $("audio").pause());
+  v.addEventListener("ended", () => { if (cancionUrl) $("audio").play().catch(() => {}); });
+});
+
+/* Estrellas, luces de la ciudad y pasto */
+for (let n = 0; n < 46; n++)
+  svg("circle", {cx: Math.random() * 380, cy: -215 + Math.random() * 340, r: Math.random() * 1.3 + .5, fill: "#fff"}, "estrellas");
+for (let n = 0; n < 36; n++)
+  svg("circle", {cx: 95 + Math.random() * 280, cy: 198 + Math.random() * 19, r: .8 + Math.random() * .8, fill: "#ffd76a"}, "luces");
+[12, 98, 142, 190, 298, 368].forEach(x =>
+  svg("path", {d: `M${x} 221l-3-6M${x} 221v-8M${x} 221l3-6`, stroke: "#6f8060", "stroke-width": 1.3, "stroke-linecap": "round", fill: "none"}, "pasto"));
 
 function reiniciar(el, clase){
   el.classList.remove(clase);
@@ -317,7 +448,7 @@ function fotoGrande(c){
 function polaroid(c){
   const p = $("polaroid");
   p.classList.remove("on");
-  if (c.modo === "foto" || !c.foto) return;
+  if (c.modo !== "dibujo" || !c.foto) return;
   const pre = new Image();
   pre.onload = () => {
     if (capitulos[paso] !== c) return;
@@ -325,6 +456,45 @@ function polaroid(c){
     p.classList.add("on");
   };
   pre.src = c.foto;
+}
+
+function explosion(){
+  const colores = ["#c0694a", "#a8432f", "#d9a441", "#ffffff"];
+  for (let n = 0; n < 40; n++) {
+    const p = document.createElement("span");
+    p.className = "chispa";
+    p.textContent = n % 3 ? "♥" : "✦";
+    const ang = Math.random() * Math.PI * 2, d = 90 + Math.random() * 200;
+    p.style.setProperty("--dx", Math.cos(ang) * d + "px");
+    p.style.setProperty("--dy", Math.sin(ang) * d + "px");
+    p.style.color = colores[n % 4];
+    p.style.fontSize = 12 + Math.random() * 20 + "px";
+    $("visual").appendChild(p);
+    setTimeout(() => p.remove(), 1900);
+  }
+}
+
+function corazones(){
+  for (let n = 0; n < 7; n++) {
+    const h = document.createElement("span");
+    h.className = "sube";
+    h.textContent = "♥";
+    h.style.left = 33 + Math.random() * 9 + "%";
+    h.style.top = "76%";
+    h.style.fontSize = 12 + Math.random() * 10 + "px";
+    h.style.animationDelay = 1 + n * .28 + "s";
+    $("visual").appendChild(h);
+    setTimeout(() => h.remove(), 5600);
+  }
+}
+
+function sonarVoz(){
+  const v = $("voz");
+  if (!v.getAttribute("src")) return;
+  $("audio").volume = .25;
+  v.onended = () => { $("audio").volume = 1; };
+  v.currentTime = 0;
+  v.play().catch(() => { $("audio").volume = 1; });
 }
 
 function mostrar(i){
@@ -337,22 +507,36 @@ function mostrar(i){
   $("suelo").style.fill = k.suelo;
   $("ventana").style.fill = k.ventana;
   $("nubes").style.opacity = k.nubes;
+  $("aves").style.opacity = k.aves;
   $("estrellas").classList.toggle("on", c.cielo === "noche");
+  $("luces").classList.toggle("on", c.cielo === "noche");
   $("yo").style.transform = `scale(${c.escala})`;
+  $("yo").classList.toggle("adulto", !!c.uniforme);
+  $("yoPos").style.transform = c.abrazo ? "translateX(-34px)" : "";
+  if (c.abrazo) corazones();
   $("arbol").style.transform = `scale(${Math.min(1, .3 + .7 * (c.escala - .42) / .68).toFixed(2)})`;
   $("novia").classList.toggle("on", !!c.novia);
   $("perro").classList.toggle("on", !!c.novia);
   $("brote").classList.toggle("on", !!c.brote);
+  $("titulo").classList.toggle("on", c.modo === "titulo");
+  $("espera").classList.remove("on");
   if (c.fugaz) reiniciar($("fugaz"), "ir");
-  if (c.destello) reiniciar($("destello"), "on");
+  if (c.revela) {
+    reiniciar($("destello"), "on");
+    reiniciar($("mami"), "salta");
+    explosion();
+    if (navigator.vibrate) navigator.vibrate([80, 60, 160]);
+    sonarVoz();
+  }
   fotoGrande(c);
   polaroid(c);
   $("edad").textContent = c.edad || "";
   [...$("barras").children].forEach((b, n) => b.classList.toggle("on", n <= i));
   $("extras").classList.toggle("on", !!c.final);
-  $("toca").style.display = c.final ? "none" : "block";
+  $("toca").style.display = (c.final || c.espera) ? "none" : "block";
   escribir(c.texto, () => {
     if (c.final) lluvia();
+    else if (c.espera) $("espera").classList.add("on");
     else reloj = setTimeout(() => mostrar(i + 1), PAUSA);
   });
 }
@@ -392,8 +576,8 @@ function lluvia(){
 $("sobre").addEventListener("click", () => {
   $("sobre").classList.add("abierto");
   capitulos.forEach(c => { if (c.foto) new Image().src = c.foto; });
-  if (C.cancion) {
-    $("audio").src = C.cancion;
+  if (cancionUrl) {
+    $("audio").src = cancionUrl;
     $("audio").play().then(() => $("sonido").style.display = "block").catch(() => {});
   }
   setTimeout(() => {
@@ -403,10 +587,12 @@ $("sobre").addEventListener("click", () => {
   }, 1600);
 });
 $("peli").addEventListener("click", e => {
-  if (e.target.closest("button,a")) return;
+  if (e.target.closest("button,a,video")) return;
+  const c = capitulos[paso];
   if (escribiendo) terminar();
-  else if (!capitulos[paso].final) mostrar(paso + 1);
+  else if (!c.final && !c.espera) mostrar(paso + 1);
 });
+$("corazon").addEventListener("click", () => mostrar(paso + 1));
 $("sonido").addEventListener("click", () => {
   $("audio").muted = !$("audio").muted;
   $("sonido").style.opacity = $("audio").muted ? .5 : 1;
